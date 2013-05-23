@@ -1,0 +1,36 @@
+package org.vano.concurrency.chapter3.cyclic.barrier;
+
+import java.util.concurrent.CyclicBarrier;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: Ivan_Pukhau
+ * Date: 5/23/13
+ * Time: 4:21 PM
+ * To change this template use File | Settings | File Templates.
+ */
+public class Main {
+
+
+    public static void main(String[] args) {
+        final int ROWS = 10000;
+        final int NUMBERS = 1000;
+        final int SEARCH = 5;
+        final int PARTICIPANTS = 5;
+        final int LINES_PARTICIPANT = 2000;
+
+        MatrixMock mock = new MatrixMock(ROWS, NUMBERS, SEARCH);
+        Results results = new Results(ROWS);
+        Grouper grouper = new Grouper(results);
+        CyclicBarrier barrier = new CyclicBarrier(PARTICIPANTS, grouper);
+        Searcher searchers[] = new Searcher[PARTICIPANTS];
+
+        for(int i = 0; i < PARTICIPANTS; i++) {
+            searchers[i] = new Searcher(i * LINES_PARTICIPANT, (i * LINES_PARTICIPANT) + LINES_PARTICIPANT,
+                    mock, results, 5, barrier);
+            Thread thread = new Thread(searchers[i]);
+            thread.start();
+        }
+        System.out.println("Main: the Main thread has finished.");
+    }
+}
