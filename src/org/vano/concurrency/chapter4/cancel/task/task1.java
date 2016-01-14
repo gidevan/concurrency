@@ -9,7 +9,7 @@ import java.util.concurrent.Callable;
  * Time: 6:57 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Task implements Callable<String> {
+public class task1 implements Callable<String> {
 
     public String call() throws Exception {
         while(true) {

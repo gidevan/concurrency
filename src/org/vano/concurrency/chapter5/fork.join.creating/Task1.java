@@ -10,7 +10,7 @@ import java.util.concurrent.RecursiveAction;
  * Time: 4:22 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Task extends RecursiveAction {
+public class Task1 extends RecursiveAction {
 
     private static final long serialVersionUID = 1;
     private static final int E = 10;
@@ -20,7 +20,7 @@ public class Task extends RecursiveAction {
     private int last;
     private double increment;
 
-    public Task(List<Product> products, int first, int last, double increment) {
+    public Task1(List<Product> products, int first, int last, double increment) {
         this.products = products;
         this.first = first;
         this.last = last;
@@ -34,8 +34,8 @@ public class Task extends RecursiveAction {
         } else {
             int middle = (last + first) / 2;
             System.out.printf("Task: Pending task: %s\n", getQueuedTaskCount());
-            Task t1 = new Task(products, first, middle + 1, increment);
-            Task t2 = new Task(products, middle + 1, last, increment);
+            Task1 t1 = new Task1(products, first, middle + 1, increment);
+            Task1 t2 = new Task1(products, middle + 1, last, increment);
             invokeAll(t1, t2);
         }
     }
