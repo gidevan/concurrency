@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
-        Task task = new Task();
+        Task1 task = new Task1();
 
         System.out.println("Main: Executing the task");
         Future<String> result = executor.submit(task);
