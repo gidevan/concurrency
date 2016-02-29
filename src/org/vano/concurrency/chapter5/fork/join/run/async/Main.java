@@ -1,5 +1,6 @@
 package org.vano.concurrency.chapter5.fork.join.run.async;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +10,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class Main {
 
-    public static void main(String args) {
+    public static void main(String[] args) {
+        long start = new Date().getTime();
         ForkJoinPool pool = new ForkJoinPool();
         FolderProcessor system = new FolderProcessor("c:\\Windows", "log");
         FolderProcessor apps = new FolderProcessor("c:\\Program Files", "log");
@@ -39,6 +41,7 @@ public class Main {
 
         results = documents.join();
         System.out.printf("Documents: %d files found. \n", results.size());
-
+        long end = new Date().getTime();
+        System.out.printf("Time: %d ms.\n", (end - start));
     }
 }
