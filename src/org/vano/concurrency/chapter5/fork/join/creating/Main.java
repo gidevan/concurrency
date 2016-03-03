@@ -22,7 +22,7 @@ public class Main {
 
         ForkJoinPool pool = new ForkJoinPool();
         pool.execute(task);
-
+        System.out.println("Run cycle:");
         do {
             System.out.printf("Main: Thread Count: %d\n", pool.getActiveThreadCount());
             System.out.printf("Main: Thread Steal: %d\n", pool.getStealCount());
