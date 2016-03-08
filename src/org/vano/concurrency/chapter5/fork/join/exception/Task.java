@@ -20,9 +20,9 @@ public class Task extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        System.out.printf("Task: Start from%d to %d", start, end);
+        System.out.printf("Task: Start from %d to %d\n", start, end);
         if(end - start < 10) {
-            if(3>start && 3 <end){
+            if(3 > start && 3 < end){
                 throw new RuntimeException("This task thrown an exception: Task from " +start+ " to " + end);
             }
             try {
