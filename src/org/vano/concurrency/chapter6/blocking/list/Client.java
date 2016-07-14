@@ -10,8 +10,10 @@ import java.util.concurrent.TimeUnit;
 public class Client implements Runnable {
 
     private LinkedBlockingDeque<String> requestList;
+    private String name;
 
-    public Client(LinkedBlockingDeque<String> requestList) {
+    public Client(String name, LinkedBlockingDeque<String> requestList) {
+        this.name = name;
         this.requestList = requestList;
     }
 
@@ -20,7 +22,7 @@ public class Client implements Runnable {
         for(int i = 0; i< 3; i++) {
             for(int j = 0; j < 5 ; j++) {
                 StringBuilder request = new StringBuilder();
-                request.append(i).append(":").append(j);
+                request.append(name).append(":").append(i).append(":").append(j);
                 try {
                     requestList.put(request.toString());
                 } catch (InterruptedException e) {

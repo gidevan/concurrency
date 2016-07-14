@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         PriorityBlockingQueue<Event> queue = new PriorityBlockingQueue<>();
         Thread[] taskThreads = new Thread[COUNT];
+        System.out.println("Initialization threads");
         for(int i = 0; i < COUNT; i++) {
             Task task = new Task(i, queue);
             taskThreads[i] = new Thread(task);
@@ -19,6 +20,7 @@ public class Main {
         for(int i = 0; i < COUNT; i++) {
             taskThreads[i].start();
         }
+        System.out.println("Start threads");
         for(int i = 0; i < COUNT; i++) {
             try {
                 taskThreads[i].join();

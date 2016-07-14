@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         LinkedBlockingDeque<String> list = new LinkedBlockingDeque<>();
-        Client client =new Client(list);
+        Client client =new Client("client1", list);
         Thread thread = new Thread(client);
         thread.start();
 
